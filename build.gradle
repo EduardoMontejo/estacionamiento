@@ -1,0 +1,17 @@
+subprojects {
+	apply plugin: 'eclipse'
+	apply plugin: 'java'
+	apply plugin: 'jacoco'
+	
+	group = 'co.com.ceiba.estacionamiento'
+	version = '1.0.0'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+
+}
