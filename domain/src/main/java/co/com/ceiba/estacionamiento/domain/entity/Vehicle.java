@@ -3,45 +3,41 @@ package co.com.ceiba.estacionamiento.domain.entity;
 public class Vehicle {
 	
 	private String plate;
-	private String brand;
-	private String model;
-	private String year;
-		
+	private int engineDisplacement;
+	private String typeVehicle;
+	
 	public Vehicle() {
-
-	}
-
-	public Vehicle(String plate, String brand, String model, String year) {
-		this.plate = plate;
-		this.brand = brand;
-		this.model = model;
-		this.year = year;
+		
 	}
 	
+	public Vehicle(String plate, int engineDisplacement, String typeVehicle) {
+		super();
+		this.plate = plate;
+		this.engineDisplacement = engineDisplacement;
+		this.typeVehicle = typeVehicle;
+	}
+
 	public String getPlate() {
 		return plate;
 	}
+	
 	public void setPlate(String plate) {
 		this.plate = plate;
 	}
-	public String getBrand() {
-		return brand;
-	}
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-	public String getModel() {
-		return model;
-	}
-	public void setModel(String model) {
-		this.model = model;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
+	
+	public int getEngineDisplacement() {
+		return engineDisplacement;
 	}
 	
-	
+	public void setEngineDisplacement(int engineDisplacement) {
+		this.engineDisplacement = engineDisplacement;
+	}
+
+	public String getTypeVehicle() {
+		return typeVehicle;
+	}
+
+	public void setTypeVehicle(String typeVehicle) {
+		this.typeVehicle = typeVehicle;
+	}
 }

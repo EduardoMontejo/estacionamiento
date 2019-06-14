@@ -1,14 +1,7 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 
 group = 'co.com.ceiba.estacionamiento'
 version = '1.0.0'
 sourceCompatibility = '1.8'
-
-repositories {
-	mavenCentral()
-}
 
 dependencies {
 

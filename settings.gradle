@@ -1,5 +1,5 @@
 rootProject.name = 'estacionamiento'
 
 include ':domain'
-include ':application'
 include ':framework'
+include ':application'

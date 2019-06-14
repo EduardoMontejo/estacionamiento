@@ -12,6 +12,11 @@ subprojects {
 	repositories {
 		jcenter()
 		mavenCentral()
+		
+        maven {
+            name 'Apache Staging'
+            url 'https://repository.apache.org/content/groups/staging'
+        }
 	}
 
 }
