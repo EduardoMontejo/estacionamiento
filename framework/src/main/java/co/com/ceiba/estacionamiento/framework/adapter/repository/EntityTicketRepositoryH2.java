@@ -20,9 +20,8 @@ public class EntityTicketRepositoryH2 implements ParkingLotRepository{
 	private EntityTicketRepositoryData entityTicketRepositoryData;
 	
 	@Override
-	public Ticket registerVehicleEntry(Ticket ticket) {
-		this.entityTicketRepositoryData.save(this.ticketMapper.mapEntityTicket(ticket));
-		return ticket;
+	public Ticket registerVehicleEntry(Ticket ticketEntry) {
+		return this.ticketMapper.mapDomain(this.entityTicketRepositoryData.save(this.ticketMapper.mapEntityTicketEntry(ticketEntry)));
 	}
 	
 	@Override
@@ -31,13 +30,13 @@ public class EntityTicketRepositoryH2 implements ParkingLotRepository{
 	}
 	
 	@Override
-	public Ticket findById(int id) {		
-		return this.ticketMapper.mapDomain(
-				this.entityTicketRepositoryData.findById(id).orElse(
-						new EntityTicket()));
+	public Ticket findById(Integer id) {		
+		return this.ticketMapper.mapDomain(this.entityTicketRepositoryData.findById(id).orElse(new EntityTicket()));
 	} 
 	
-//	public Ticket registerVehicleExit(Ticket ticket) {
-//		
-//	}
+	@Override
+	public Ticket registerVehicleExit(Ticket ticket) {
+		this.entityTicketRepositoryData.save(this.ticketMapper.mapEntityTicketExit(ticket));
+		return ticket;
+	}
 }

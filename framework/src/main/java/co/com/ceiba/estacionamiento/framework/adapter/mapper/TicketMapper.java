@@ -18,8 +18,7 @@ public class TicketMapper {
 		
 	}
 	
-	public EntityTicket mapEntityTicket(Ticket ticket) {
-		
+	public EntityTicket mapEntityTicketEntry(Ticket ticket) {
 		EntityTicket entityTicket = new EntityTicket(
 										ticket.getVehicle().getPlate(),
 										ticket.getVehicle().getTypeVehicle(),
@@ -28,27 +27,31 @@ public class TicketMapper {
 		return entityTicket;
 	}
 	
+	public EntityTicket mapEntityTicketExit(Ticket ticketEntry) {
+		EntityTicket entityTicketExit = new EntityTicket(
+											ticketEntry.getId(),											
+											ticketEntry.getVehicle().getPlate(),
+											ticketEntry.getVehicle().getTypeVehicle(),
+											ticketEntry.getVehicle().getEngineDisplacement(),
+											ticketEntry.getAdmissionDate(),
+											ticketEntry.getDepartureDate(),
+											ticketEntry.getValue());
+		return entityTicketExit;
+	}
+	
 	public Collection<Ticket> mapDomain(Iterable<EntityTicket> entityList) {
-		
 		List<Ticket> ticketsList = new ArrayList<>();
-		
-		entityList.forEach(entityTicket -> {
-			Ticket ticket = new Ticket(entityTicket.getAdmissionDate(), 
-									   new Vehicle(entityTicket.getPlate(), entityTicket.getEngineDisplacement(), entityTicket.getTypeVehicle()));
-			
-			ticketsList.add(ticket);
-		});
+		entityList.forEach(entityTicket -> ticketsList.add(this.mapDomain(entityTicket)));
 		
 		return ticketsList;
 	}
 	
 	public Ticket mapDomain(EntityTicket entityTicket) {
-		
 		Vehicle vehicle = new Vehicle(entityTicket.getPlate(), entityTicket.getEngineDisplacement(), 
 				entityTicket.getTypeVehicle());
-        Ticket newTicket = new Ticket(entityTicket.getId(),
-        		entityTicket.getAdmissionDate(), vehicle);
+        Ticket ticketEntry = new Ticket(entityTicket.getAdmissionDate(), vehicle);
+        ticketEntry.setId(entityTicket.getId());
 				
-		return newTicket;
+		return ticketEntry;
 	}
 }

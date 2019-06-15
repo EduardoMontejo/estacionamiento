@@ -24,19 +24,24 @@ public class EntityTicket {
 
 	}
 	
+	//Contructor para representar una entidad ticket entrada
 	public EntityTicket(String plate, String typeVehicle, int engineDisplacement, LocalDateTime admissionDate) {
-		super();
 		this.plate = plate;
 		this.typeVehicle = typeVehicle;
 		this.engineDisplacement = engineDisplacement;
 		this.admissionDate = admissionDate;
 	}
-
-	public EntityTicket(String plate, String typeVehicle, int engineDisplacement) {
-		super();
+	
+	//Contructor para representar una entidad ticket salida
+	public EntityTicket(int id, String plate, String typeVehicle, int engineDisplacement, LocalDateTime admissionDate,
+			LocalDateTime departureDate, int value) {
+		this.id = id;
 		this.plate = plate;
 		this.typeVehicle = typeVehicle;
 		this.engineDisplacement = engineDisplacement;
+		this.admissionDate = admissionDate;
+		this.departureDate = departureDate;
+		this.value = value;
 	}
 
 	public int getId() {

@@ -1,24 +1,23 @@
 package co.com.ceiba.estacionamiento.application.command;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.estacionamiento.domain.entity.Ticket;
 import co.com.ceiba.estacionamiento.domain.entity.Vehicle;
-import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
+import co.com.ceiba.estacionamiento.domain.service.ServiceRegisterVehicleEntry;
 
 @Component
 public class RegisterVehicleEntryHandler {
 	
-	private final ParkingLotRepository repository;
+	private final ServiceRegisterVehicleEntry serviceRegisterVehicleEntry;
 	
-	public RegisterVehicleEntryHandler(ParkingLotRepository repository) {
-		this.repository = repository;
+	public RegisterVehicleEntryHandler(ServiceRegisterVehicleEntry serviceRegisterVehicleEntry) {
+		this.serviceRegisterVehicleEntry = serviceRegisterVehicleEntry;
 	}
 
 	public Ticket handle(VehicleCommand vehicleCommand) {
-		Vehicle newVehicle = new Vehicle(vehicleCommand.getPlate(), vehicleCommand.getEngineDisplacement(), vehicleCommand.getTypeVehicle());
-		return this.repository.registerVehicleEntry(new Ticket(LocalDateTime.now(), newVehicle));
+		return this.serviceRegisterVehicleEntry.registerVehicleEntry(new Vehicle(
+				vehicleCommand.getPlate(), vehicleCommand.getEngineDisplacement(), 
+				vehicleCommand.getTypeVehicle()));
 	}
 }

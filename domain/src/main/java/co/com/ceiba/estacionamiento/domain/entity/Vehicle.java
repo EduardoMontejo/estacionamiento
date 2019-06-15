@@ -11,7 +11,6 @@ public class Vehicle {
 	}
 	
 	public Vehicle(String plate, int engineDisplacement, String typeVehicle) {
-		super();
 		this.plate = plate;
 		this.engineDisplacement = engineDisplacement;
 		this.typeVehicle = typeVehicle;

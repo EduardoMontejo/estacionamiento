@@ -10,7 +10,7 @@ public interface ParkingLotRepository {
 	
 	Collection<Ticket> findVehiclesInParkingLot();
 	
-	Ticket findById(int id);
+	Ticket findById(Integer id);
 	
-//	Ticket registerVehicleExit(Ticket ticket);
+	Ticket registerVehicleExit(Ticket ticket);
 }

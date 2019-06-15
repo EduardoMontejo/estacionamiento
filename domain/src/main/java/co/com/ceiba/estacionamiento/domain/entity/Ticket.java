@@ -14,19 +14,14 @@ public class Ticket {
 		
 	}
 	
-	public Ticket(LocalDateTime admissionDate) {
-		super();
-		this.admissionDate = admissionDate;
-	}
-	
+	//Constructor para representar un ticket de entrada
 	public Ticket(LocalDateTime admissionDate, Vehicle vehicle) {
-		super();
 		this.admissionDate = admissionDate;
 		this.vehicle = vehicle;
 	}
-
+	
+	//Constructor para representar un ticket de salida
 	public Ticket(int id, LocalDateTime admissionDate, LocalDateTime departureDate, Vehicle vehicle, int value) {
-		super();
 		this.id = id;
 		this.admissionDate = admissionDate;
 		this.departureDate = departureDate;
@@ -34,13 +29,6 @@ public class Ticket {
 		this.value = value;
 	}
 	
-	public Ticket(int id, LocalDateTime admissionDate, Vehicle vehicle) {
-		super();
-		this.id = id;
-		this.admissionDate = admissionDate;
-		this.vehicle = vehicle;
-	}
-
 	public int getId() {
 		return id;
 	}
