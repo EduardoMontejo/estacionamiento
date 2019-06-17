@@ -45,16 +45,16 @@ pipeline {
 	 		}
 	 	}
 	 
-//	 	stage('Static Code Analysis') {
-//	 		steps{
-//	 			echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'
-//	 			withSonarQubeEnv('Sonar') {
-//					sh "${tool name: 'SonarScanner',
-//					type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner
-//					-Dproject.settings=sonar-project.properties"
-//				}
-//	 		}
-//	 	}
+	 	stage('Static Code Analysis') {
+	 		steps{
+	 			echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'
+	 			withSonarQubeEnv('Sonar') {
+					sh "${tool name: 'SonarScanner',
+					type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner
+					-Dproject.settings=sonar-project.properties"
+				}
+	 		}
+	 	}
 	 	
 	 	stage('Build') {
 	 		steps {
