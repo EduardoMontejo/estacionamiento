@@ -49,8 +49,8 @@ pipeline {
 	 		steps{
 	 			echo '------------>AnÃƒÂ¡lisis de cÃƒÂ³digo estÃƒÂ¡tico<------------'
 	 			withSonarQubeEnv('Sonar') {
-					sh "${tool name: 'SonarScanner',
-					type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner
+					sh "${tool name: '''SonarScanner''',
+					type:'''hudson.plugins.sonar.SonarRunnerInstallation'''}/bin/sonar-scanner
 					-Dproject.settings=sonar-project.properties"
 				}
 	 		}
