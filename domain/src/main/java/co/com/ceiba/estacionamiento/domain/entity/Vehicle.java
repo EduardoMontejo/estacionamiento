@@ -6,10 +6,6 @@ public class Vehicle {
 	private int engineDisplacement;
 	private String typeVehicle;
 	
-	public Vehicle() {
-		
-	}
-	
 	public Vehicle(String plate, int engineDisplacement, String typeVehicle) {
 		this.plate = plate;
 		this.engineDisplacement = engineDisplacement;

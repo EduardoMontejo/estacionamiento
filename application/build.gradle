@@ -13,5 +13,5 @@ repositories {
 dependencies {
 	compile 'org.springframework:spring-tx:5.1.4.RELEASE'
 	compile 'org.springframework:spring-context:5.1.4.RELEASE'
-	implementation project(":domain")
+	implementation project(':domain')
 }

@@ -14,10 +14,6 @@ public class ParkingLot {
 	private int numMotorcycles;
 	private int numCars;
 	
-	public ParkingLot() {
-		
-	}
-
 	public String getNit() {
 		return nit;
 	}

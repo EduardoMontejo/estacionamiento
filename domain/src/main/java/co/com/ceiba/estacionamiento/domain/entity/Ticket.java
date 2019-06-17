@@ -10,10 +10,6 @@ public class Ticket {
 	private Vehicle vehicle;
 	private int value;
 			
-	public Ticket() {
-		
-	}
-	
 	//Constructor para representar un ticket de entrada
 	public Ticket(LocalDateTime admissionDate, Vehicle vehicle) {
 		this.admissionDate = admissionDate;

@@ -1,5 +1,6 @@
 package co.com.ceiba.estacionamiento.domain.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.regex.Pattern;
@@ -13,7 +14,7 @@ import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
 public class ServiceRegisterVehicleEntry {
 	
 	public static final String PARKING_WITHOUT_SPACE = "No hay cupo en el parqueadero";
-	public static final String UNAUTHORIZED_ENTRY = "No esta autorizado a ingresar";
+	public static final String UNAUTHORIZED_ENTRY = "No puede ingresar porque no está en un dia hábil";
 	private final ParkingLot parkingLot;
 	private final ParkingLotRepository repository;
 
@@ -23,8 +24,7 @@ public class ServiceRegisterVehicleEntry {
 	}
 	
 	public Ticket registerVehicleEntry(Vehicle vehicle) {
-		
-		if(this.initialLetterPlate(vehicle.getPlate())) {
+		if(validateDayOfTheWeek() && this.initialLetterPlate(vehicle.getPlate())) {
 			throw new ParkingLotException(UNAUTHORIZED_ENTRY);			
 		} else if(this.validateMaximumCapacity(vehicle.getTypeVehicle())) {
 			throw new ParkingLotException(PARKING_WITHOUT_SPACE);
@@ -32,18 +32,20 @@ public class ServiceRegisterVehicleEntry {
 			return this.repository.registerVehicleEntry(new Ticket(LocalDateTime.now(), vehicle));
 		}		
 	}
-
+	
+	public boolean validateDayOfTheWeek() {
+		int dayOfTheWeek = LocalDate.now().getDayOfWeek().getValue();
+		return dayOfTheWeek != 1 && dayOfTheWeek != 7;
+	}
+	
 	public boolean initialLetterPlate(String plate) {
-		//regular expression
-		String regex = "^A";
-		Pattern r = Pattern.compile(regex);
-		
-		return r.matches(regex, plate);
+		String regex = "^A.....";
+		return Pattern.matches(regex, plate.toUpperCase());
 	}
 	
 	public boolean validateMaximumCapacity(String typeVehicle) {
 		this.toLoadPakingLot();
-		return typeVehicle.equals("moto") ? 
+		return typeVehicle.toLowerCase().equals("moto") ? 
 				this.parkingLot.getNumMotorcycles() == ParkingLot.MAXIMUM_NUMBER_OF_MOTORCYCLES :
 					this.parkingLot.getNumCars() == ParkingLot.MAXIMUM_NUMBER_OF_CARS;
 	}

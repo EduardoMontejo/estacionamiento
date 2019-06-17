@@ -26,7 +26,7 @@ public class EntityTicketRepositoryH2 implements ParkingLotRepository{
 	
 	@Override
 	public Collection<Ticket> findVehiclesInParkingLot() {
-		return this.ticketMapper.mapDomain(entityTicketRepositoryData.findAll());
+		return this.ticketMapper.mapDomain(this.entityTicketRepositoryData.findByValue(0));
 	}
 	
 	@Override

@@ -16,5 +16,4 @@ public class ServiceSelectAllVehiclesInParkingLot {
 		public Collection<Ticket> findVehiclesInParkingLot() {
 			return this.repository.findVehiclesInParkingLot();
 		}
-		
 }
