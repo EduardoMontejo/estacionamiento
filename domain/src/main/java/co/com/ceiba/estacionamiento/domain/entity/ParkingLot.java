@@ -9,26 +9,8 @@ public class ParkingLot {
 	public static final int PRICE_DAY_MOTORCYCLE = 4000;
 	public static final int PRICE_DAY_CAR = 8000;
 	
-	private String nit;
-	private String name;
 	private int numMotorcycles;
 	private int numCars;
-	
-	public String getNit() {
-		return nit;
-	}
-
-	public void setNit(String nit) {
-		this.nit = nit;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public int getNumMotorcycles() {
 		return numMotorcycles;
