@@ -10,13 +10,11 @@ public class Ticket {
 	private Vehicle vehicle;
 	private int value;
 			
-	//Constructor para representar un ticket de entrada
 	public Ticket(LocalDateTime admissionDate, Vehicle vehicle) {
 		this.admissionDate = admissionDate;
 		this.vehicle = vehicle;
 	}
 	
-	//Constructor para representar un ticket de salida
 	public Ticket(int id, LocalDateTime admissionDate, LocalDateTime departureDate, Vehicle vehicle, int value) {
 		this.id = id;
 		this.admissionDate = admissionDate;

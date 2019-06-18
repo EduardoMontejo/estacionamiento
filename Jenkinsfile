@@ -68,11 +68,15 @@ pipeline {
 		 }
 	 
 	 	success {
-	 		echo 'This will run only if successful'
+	 		echo 'This will run only if successful' 
+//	 		junit ​'**/build/test-results/test/*.xml'  
 	 	}
 	 
 	 	failure {
-	 		echo 'This will run only if failed'
+	 		echo 'This will run only if failed' 
+	 		mail (to: '​eduardo.montejo@ceiba.com.co​',
+	 				subject: "​Failed Pipeline:${currentBuild.fullDisplayName}​",
+	 				body: "​Something is wrong with ${env.BUILD_URL}​") 
 	 	}
 	 
 	 	unstable {

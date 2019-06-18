@@ -14,29 +14,21 @@ import co.com.ceiba.estacionamiento.framework.adapter.entity.EntityTicket;
 @Component
 public class TicketMapper {
 	
-	public TicketMapper() {
-		
-	}
-	
 	public EntityTicket mapEntityTicketEntry(Ticket ticket) {
-		EntityTicket entityTicket = new EntityTicket(
-										ticket.getVehicle().getPlate(),
-										ticket.getVehicle().getTypeVehicle(),
-										ticket.getVehicle().getEngineDisplacement(),
-										ticket.getAdmissionDate());
-		return entityTicket;
+		return new EntityTicket(ticket.getVehicle().getPlate(),
+								ticket.getVehicle().getTypeVehicle(),
+								ticket.getVehicle().getEngineDisplacement(),
+								ticket.getAdmissionDate());
 	}
 	
 	public EntityTicket mapEntityTicketExit(Ticket ticketEntry) {
-		EntityTicket entityTicketExit = new EntityTicket(
-											ticketEntry.getId(),											
-											ticketEntry.getVehicle().getPlate(),
-											ticketEntry.getVehicle().getTypeVehicle(),
-											ticketEntry.getVehicle().getEngineDisplacement(),
-											ticketEntry.getAdmissionDate(),
-											ticketEntry.getDepartureDate(),
-											ticketEntry.getValue());
-		return entityTicketExit;
+		return new EntityTicket(ticketEntry.getId(),											
+								ticketEntry.getVehicle().getPlate(),
+								ticketEntry.getVehicle().getTypeVehicle(),
+								ticketEntry.getVehicle().getEngineDisplacement(),
+								ticketEntry.getAdmissionDate(),
+								ticketEntry.getDepartureDate(),
+								ticketEntry.getValue());
 	}
 	
 	public Collection<Ticket> mapDomain(Iterable<EntityTicket> entityList) {

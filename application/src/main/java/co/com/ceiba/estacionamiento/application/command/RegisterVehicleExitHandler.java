@@ -13,18 +13,6 @@ import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
 @Component
 public class RegisterVehicleExitHandler {
 
-//	private final ServiceRegisterVehicleExit serviceRegisterExit;
-//	
-//	public RegisterVehicleExitHandler(ServiceRegisterVehicleExit serviceRegisterExit) {
-//		this.serviceRegisterExit = serviceRegisterExit;
-//	}
-//
-//	public Ticket handle(Integer id) {
-//		return this.serviceRegisterExit.registerVehicleExit(id);
-//	}
-	
-//	LOGICA EN EL SERVICIO DEL DOMINIO
-	
 	public static final String TICKET_DOES_NOT_EXIST = "El ticket no existe";
 	private final ParkingLotRepository repository;
 	
@@ -50,7 +38,7 @@ public class RegisterVehicleExitHandler {
 	}
 	
 	public int calculateValueTicket(Ticket ticket) {
-		boolean isMotorcycle = ticket.getVehicle().getTypeVehicle().toLowerCase().equals("moto");
+		boolean isMotorcycle = "moto".equalsIgnoreCase(ticket.getVehicle().getTypeVehicle());
 		int priceDay = isMotorcycle ? ParkingLot.PRICE_DAY_MOTORCYCLE : ParkingLot.PRICE_DAY_CAR;
 		int priceHour = isMotorcycle ? ParkingLot.PRICE_HOUR_MOTORCYCLE : ParkingLot.PRICE_HOUR_CAR;
 		

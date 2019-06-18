@@ -17,20 +17,6 @@ import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
 @Component
 public class RegisterVehicleEntryHandler {
 	
-//	private final ServiceRegisterVehicleEntry serviceRegisterVehicleEntry;
-//	
-//	public RegisterVehicleEntryHandler(ServiceRegisterVehicleEntry serviceRegisterVehicleEntry) {
-//		this.serviceRegisterVehicleEntry = serviceRegisterVehicleEntry;
-//	}
-//
-//	public Ticket handle(VehicleCommand vehicleCommand) {
-//		return this.serviceRegisterVehicleEntry.registerVehicleEntry(new Vehicle(
-//				vehicleCommand.getPlate(), vehicleCommand.getEngineDisplacement(), 
-//				vehicleCommand.getTypeVehicle()));
-//	}
-	
-//	LOGICA EN EL SERVICIO DEL DOMINIO
-	
 	public static final String PARKING_WITHOUT_SPACE = "No hay cupo en el parqueadero";
 	public static final String UNAUTHORIZED_ENTRY = "No puede ingresar porque no está en un dia hábil";
 	
@@ -70,7 +56,7 @@ public class RegisterVehicleEntryHandler {
 	
 	public boolean validateMaximumCapacity(String typeVehicle) {
 		this.toLoadPakingLot();
-		return typeVehicle.toLowerCase().equals("moto") ? 
+		return "moto".equalsIgnoreCase(typeVehicle) ? 
 				this.parkingLot.getNumMotorcycles() == ParkingLot.MAXIMUM_NUMBER_OF_MOTORCYCLES :
 					this.parkingLot.getNumCars() == ParkingLot.MAXIMUM_NUMBER_OF_CARS;
 	}
@@ -79,7 +65,7 @@ public class RegisterVehicleEntryHandler {
 		Collection<Ticket> vehiclesInParkingLot = this.repository.findVehiclesInParkingLot();
 		
 		vehiclesInParkingLot.forEach(ticket -> {
-				if(ticket.getVehicle().getTypeVehicle().equals("moto")) {
+				if("moto".equals(ticket.getVehicle().getTypeVehicle())) {
 					this.parkingLot.setNumMotorcycles(this.parkingLot.getNumMotorcycles() + 1);
 				} else {
 					this.parkingLot.setNumCars(this.parkingLot.getNumCars() + 1);
