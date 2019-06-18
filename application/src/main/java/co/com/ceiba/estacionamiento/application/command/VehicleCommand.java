@@ -2,31 +2,31 @@ package co.com.ceiba.estacionamiento.application.command;
 
 public class VehicleCommand {
 	
-	private String plate;
-	private int engineDisplacement;
-	private String typeVehicle;
+	private String plateCommand;
+	private int engineDisplacementCommand;
+	private String typeVehicleCommand;
 	
-	public String getPlate() {
-		return plate;
-	}
-	
-	public void setPlate(String plate) {
-		this.plate = plate;
+	public String getPlateCommand() {
+		return plateCommand;
 	}
 	
-	public int getEngineDisplacement() {
-		return engineDisplacement;
+	public void setPlateComamand(String plateCommand) {
+		this.plateCommand = plateCommand;
 	}
 	
-	public void setEngineDisplacement(int engineDisplacement) {
-		this.engineDisplacement = engineDisplacement;
+	public int getEngineDisplacementCommand() {
+		return engineDisplacementCommand;
 	}
-
-	public String getTypeVehicle() {
-		return typeVehicle;
+	
+	public void setEngineDisplacementCommand(int engineDisplacementCommand) {
+		this.engineDisplacementCommand = engineDisplacementCommand;
 	}
-
-	public void setTypeVehicle(String typeVehicle) {
-		this.typeVehicle = typeVehicle;
+	
+	public String getTypeVehicleCommand() {
+		return typeVehicleCommand;
+	}
+	
+	public void setTypeVehicleCommand(String typeVehicleCommand) {
+		this.typeVehicleCommand = typeVehicleCommand;
 	}
 }

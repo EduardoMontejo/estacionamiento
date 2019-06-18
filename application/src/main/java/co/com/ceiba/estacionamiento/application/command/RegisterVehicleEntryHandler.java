@@ -3,7 +3,6 @@ package co.com.ceiba.estacionamiento.application.command;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Component;
 
@@ -30,8 +29,8 @@ public class RegisterVehicleEntryHandler {
 	
 	public Ticket handle(VehicleCommand vehicleCommand) {
 		return this.registerVehicleEntry(new Vehicle(
-				vehicleCommand.getPlate(), vehicleCommand.getEngineDisplacement(), 
-				vehicleCommand.getTypeVehicle()));
+				vehicleCommand.getPlateCommand(), vehicleCommand.getEngineDisplacementCommand(), 
+				vehicleCommand.getTypeVehicleCommand()));
 	}
 	
 	public Ticket registerVehicleEntry(Vehicle vehicle) {
@@ -45,8 +44,7 @@ public class RegisterVehicleEntryHandler {
 	}
 	
 	public boolean initialLetterPlate(String plate) {
-		String regex = "^A.....";
-		return Pattern.matches(regex, plate.toUpperCase());
+		return 'a' == plate.toLowerCase().charAt(0);
 	}
 	
 	public boolean validateDayOfTheWeek() {

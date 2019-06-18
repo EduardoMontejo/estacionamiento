@@ -35,8 +35,8 @@ public class ParkingLotController {
 	}
 	
 	@PostMapping("/tickets")
-	public ResponseEntity<Ticket> registerVehicleEntry(@RequestBody VehicleCommand vehicleCommand) {
-		return new ResponseEntity<Ticket>(this.registerVehicleEntryHandler.handle(vehicleCommand), HttpStatus.CREATED);
+	public ResponseEntity<?> registerVehicleEntry(@RequestBody VehicleCommand vehicleCommand) {
+		return new ResponseEntity<>(this.registerVehicleEntryHandler.handle(vehicleCommand), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/tickets")
@@ -45,7 +45,7 @@ public class ParkingLotController {
 	}
 	
 	@PatchMapping("/tickets/{id}")
-	public ResponseEntity<Ticket> registerVehicleEntry(@PathVariable Integer id) {
-		return new ResponseEntity<Ticket>(this.registerVehicleExitHandler.handle(id), HttpStatus.CREATED);
+	public ResponseEntity<?> registerVehicleEntry(@PathVariable Integer id) {
+		return new ResponseEntity<>(this.registerVehicleExitHandler.handle(id), HttpStatus.CREATED);
 	}
 }
