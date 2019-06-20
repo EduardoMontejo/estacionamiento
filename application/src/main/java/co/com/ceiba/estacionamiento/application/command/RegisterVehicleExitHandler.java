@@ -5,15 +5,17 @@ import java.time.temporal.ChronoUnit;
 
 import org.springframework.stereotype.Component;
 
-import co.com.ceiba.estacionamiento.domain.entity.ParkingLot;
 import co.com.ceiba.estacionamiento.domain.entity.Ticket;
-import co.com.ceiba.estacionamiento.domain.exception.ParkingLotException;
 import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
 
 @Component
 public class RegisterVehicleExitHandler {
-
-	public static final String TICKET_DOES_NOT_EXIST = "El ticket no existe";
+	
+	public static final int PRICE_HOUR_MOTORCYCLE = 500;
+	public static final int PRICE_HOUR_CAR = 1000;
+	public static final int PRICE_DAY_MOTORCYCLE = 4000;
+	public static final int PRICE_DAY_CAR = 8000;
+	
 	private final ParkingLotRepository repository;
 	
 	public RegisterVehicleExitHandler(ParkingLotRepository repository) {
@@ -26,21 +28,15 @@ public class RegisterVehicleExitHandler {
 	
 	public Ticket registerVehicleExit(Integer id) {
 		Ticket ticketEntry = this.repository.findById(id);
-		
-		if(ticketEntry.getAdmissionDate() == null) {
-			throw new ParkingLotException(TICKET_DOES_NOT_EXIST);
-		} else {
-			ticketEntry.setDepartureDate(LocalDateTime.now());
-			ticketEntry.setValue(calculateValueTicket(ticketEntry));
-			
-			return this.repository.registerVehicleExit(ticketEntry);
-		}
+		ticketEntry.setDepartureDate(LocalDateTime.now());
+		ticketEntry.setValue(calculateValueTicket(ticketEntry));
+		return this.repository.registerVehicleExit(ticketEntry);
 	}
 	
 	public int calculateValueTicket(Ticket ticket) {
 		boolean isMotorcycle = "moto".equalsIgnoreCase(ticket.getVehicle().getTypeVehicle());
-		int priceDay = isMotorcycle ? ParkingLot.PRICE_DAY_MOTORCYCLE : ParkingLot.PRICE_DAY_CAR;
-		int priceHour = isMotorcycle ? ParkingLot.PRICE_HOUR_MOTORCYCLE : ParkingLot.PRICE_HOUR_CAR;
+		int priceDay = isMotorcycle ? PRICE_DAY_MOTORCYCLE : PRICE_DAY_CAR;
+		int priceHour = isMotorcycle ? PRICE_HOUR_MOTORCYCLE : PRICE_HOUR_CAR;
 		
         int differenceHours = (int)ChronoUnit.HOURS.between(ticket.getAdmissionDate(), ticket.getDepartureDate());
        
@@ -58,6 +54,7 @@ public class RegisterVehicleExitHandler {
     		value += differenceHours * priceHour;
         }	
     	
-        return isMotorcycle && ticket.getVehicle().getEngineDisplacement() > 500 ? value + 2000 : value;
+        return value != 0 && isMotorcycle && ticket.getVehicle().getEngineDisplacement() > 500 ? 
+        		value + 2000 : value;
 	}	
 }

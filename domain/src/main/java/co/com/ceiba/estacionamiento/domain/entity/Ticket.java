@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public class Ticket {
 	
+	private static final String ADMISSION_DATE_IS_REQUIRED = "La fecha de entrada es requerida";
+	private static final String VEHICLE_IS_REQUIRED = "Vehiculo es requerida";
+	
 	private int id;
 	private LocalDateTime admissionDate;
 	private LocalDateTime departureDate;
@@ -11,11 +14,17 @@ public class Ticket {
 	private int value;
 			
 	public Ticket(LocalDateTime admissionDate, Vehicle vehicle) {
+		ValidatorArgument.validateRequired(admissionDate, ADMISSION_DATE_IS_REQUIRED);
+		ValidatorArgument.validateRequired(vehicle, VEHICLE_IS_REQUIRED);
+		
 		this.admissionDate = admissionDate;
 		this.vehicle = vehicle;
 	}
 	
 	public Ticket(int id, LocalDateTime admissionDate, LocalDateTime departureDate, Vehicle vehicle, int value) {
+		ValidatorArgument.validateRequired(admissionDate, ADMISSION_DATE_IS_REQUIRED);
+		ValidatorArgument.validateRequired(vehicle, VEHICLE_IS_REQUIRED);
+		
 		this.id = id;
 		this.admissionDate = admissionDate;
 		this.departureDate = departureDate;
