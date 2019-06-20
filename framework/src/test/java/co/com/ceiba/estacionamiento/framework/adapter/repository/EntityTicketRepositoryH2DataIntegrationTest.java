@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 import co.com.ceiba.estacionamiento.application.command.RegisterVehicleEntryHandler;
+import co.com.ceiba.estacionamiento.application.command.VehicleCommand;
 import co.com.ceiba.estacionamiento.application.query.SelectAllVehiclesInParkingLotQueryHandler;
 import co.com.ceiba.estacionamiento.domain.entity.Ticket;
-import co.com.ceiba.estacionamiento.domain.entity.Vehicle;
 import co.com.ceiba.estacionamiento.framework.adapter.entity.EntityTicket;
 import co.com.ceiba.estacionamiento.framework.testdatabuilder.EntityTicketTestDataBuilder;
 
@@ -40,13 +40,13 @@ public class EntityTicketRepositoryH2DataIntegrationTest {
 	public void shouldReturnOnlyVehiclesInParkingLot() throws Exception {
 		//Arrange
 		EntityTicket entityTicket = new EntityTicketTestDataBuilder().build();
-		this.registerVehicleEntryHandler.registerVehicleEntry(new Vehicle(
+		this.registerVehicleEntryHandler.handle(new VehicleCommand(
 				entityTicket.getPlate(),
 				entityTicket.getEngineDisplacement(),
 				entityTicket.getTypeVehicle()));
 				
 		//Act
-		Collection<Ticket> vehiclesInParkingLot = this.selectAllVehiclesInParkingLot.findVehiclesInParkingLot();
+		Collection<Ticket> vehiclesInParkingLot = this.selectAllVehiclesInParkingLot.handle();
 		
 		//Assert
 		assertEquals("1", String.valueOf(vehiclesInParkingLot.size()));

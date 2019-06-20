@@ -2,25 +2,22 @@ package co.com.ceiba.estacionamiento.application.query;
 
 import java.util.Collection;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.estacionamiento.domain.entity.Ticket;
-import co.com.ceiba.estacionamiento.domain.port.ParkingLotRepository;
+import co.com.ceiba.estacionamiento.domain.service.ServiceSelectAllVehiclesInParkingLot;
 
 @Component
+@ComponentScan("co.com.ceiba.estacionamiento")
 public class SelectAllVehiclesInParkingLotQueryHandler {
+	private final ServiceSelectAllVehiclesInParkingLot serviceSelectAllVehiclesInParkingLot;
 	
-	private final ParkingLotRepository repository;
+	public SelectAllVehiclesInParkingLotQueryHandler(ServiceSelectAllVehiclesInParkingLot serviceSelectAllVehiclesInParkingLot) {
+		this.serviceSelectAllVehiclesInParkingLot = serviceSelectAllVehiclesInParkingLot;
+	}
 
-	public SelectAllVehiclesInParkingLotQueryHandler(ParkingLotRepository repository) {
-		this.repository = repository;
-	}
-	
 	public Collection<Ticket> handle() {
-		return this.findVehiclesInParkingLot();
-	}
-	
-	public Collection<Ticket> findVehiclesInParkingLot() {
-		return this.repository.findVehiclesInParkingLot();
+		return serviceSelectAllVehiclesInParkingLot.findVehiclesInParkingLot();
 	}
 }

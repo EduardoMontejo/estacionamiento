@@ -14,7 +14,4 @@ dependencies {
 	compile 'org.springframework:spring-tx:5.1.4.RELEASE'
 	compile 'org.springframework:spring-context:5.1.4.RELEASE'
 	implementation project(':domain')
-	
-	testImplementation 'junit:junit:4.12'
-  	testImplementation 'org.mockito:mockito-all:1.10.19'
 }
