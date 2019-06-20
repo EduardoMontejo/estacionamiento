@@ -2,7 +2,7 @@ package co.com.ceiba.estacionamiento.domain.entity;
 
 import co.com.ceiba.estacionamiento.domain.exception.ParkingLotException;
 
-public class ValidatorArgument {
+public final class ValidatorArgument {
 	
 	private ValidatorArgument() {
 		//
