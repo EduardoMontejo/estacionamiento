@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-20T23:07:50" hostname="EDUARDO-MONTEJO" time="0.298">
+<testsuite name="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-20T23:41:42" hostname="EDUARDO-MONTEJO" time="0.374">
   <properties/>
-  <testcase name="registerVehicleWithPlateInitA" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" time="0.298"/>
+  <testcase name="countMotorcycles" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" time="0.37"/>
+  <testcase name="registerVehicleWithPlateInitA" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" time="0.001"/>
+  <testcase name="countCars" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleEntryTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

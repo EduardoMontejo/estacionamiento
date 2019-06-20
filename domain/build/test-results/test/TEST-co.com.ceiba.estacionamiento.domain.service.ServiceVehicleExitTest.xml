@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-06-20T23:07:51" hostname="EDUARDO-MONTEJO" time="0.022">
+<testsuite name="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-06-20T23:41:43" hostname="EDUARDO-MONTEJO" time="0.017">
   <properties/>
-  <testcase name="calculateValueTicketMotoTenHoursAndHighEngine" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.018"/>
+  <testcase name="calculateValueTicketMotoTenHoursAndHighEngine" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.014"/>
   <testcase name="calculateValueTicketCarOneHour" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.001"/>
   <testcase name="calculateValueTicketCarOneDayAndThreeHours" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.001"/>
-  <testcase name="calculateValueTicketMotoNineHoursAndHighEngine" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.001"/>
+  <testcase name="calculateValueTicketMotoNineHoursAndHighEngine" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.0"/>
   <testcase name="calculateValueTicketMotoNineHoursAndLowEngine" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.001"/>
   <testcase name="calculateValueTicketCarNineHours" classname="co.com.ceiba.estacionamiento.domain.service.ServiceVehicleExitTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
