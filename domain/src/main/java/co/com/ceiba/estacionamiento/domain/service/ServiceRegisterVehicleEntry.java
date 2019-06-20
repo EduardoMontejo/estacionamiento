@@ -26,28 +26,18 @@ public class ServiceRegisterVehicleEntry {
 	}
 	
 	public Ticket registerVehicleEntry(Vehicle vehicle) {
-		if(!validateDayOfTheWeek() && this.initialLetterPlate(vehicle.getPlate())) {
+		int dayOfTheWeek = LocalDate.now().getDayOfWeek().getValue();
+		
+		if(!(dayOfTheWeek == 1 || dayOfTheWeek == 7) && 
+				('a' == vehicle.getPlate().toLowerCase().charAt(0))) {
 			throw new ParkingLotException(UNAUTHORIZED_ENTRY);			
-		} else if(this.validateMaximumCapacity(vehicle.getTypeVehicle())) {
+		} else if("moto".equalsIgnoreCase(vehicle.getTypeVehicle()) ? 
+					this.countVehicles("moto") == MAXIMUM_NUMBER_OF_MOTORCYCLES :
+						this.countVehicles("carro") == MAXIMUM_NUMBER_OF_CARS) {
 			throw new ParkingLotException(PARKING_WITHOUT_SPACE);
 		} else {
 			return this.repository.registerVehicleEntry(new Ticket(LocalDateTime.now(), vehicle));
 		}		
-	}
-	
-	public boolean initialLetterPlate(String plate) {
-		return 'a' == plate.toLowerCase().charAt(0);
-	}
-	
-	public boolean validateDayOfTheWeek() {
-		int dayOfTheWeek = LocalDate.now().getDayOfWeek().getValue();
-		return dayOfTheWeek == 1 || dayOfTheWeek == 7;
-	}
-	
-	public boolean validateMaximumCapacity(String typeVehicle) {
-		return "moto".equalsIgnoreCase(typeVehicle) ? 
-				this.countVehicles("moto") == MAXIMUM_NUMBER_OF_MOTORCYCLES :
-					this.countVehicles("carro") == MAXIMUM_NUMBER_OF_CARS;
 	}
 	
 	public int countVehicles(String typeVehicle) {

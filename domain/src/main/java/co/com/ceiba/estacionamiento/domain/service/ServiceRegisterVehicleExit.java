@@ -20,7 +20,7 @@ public class ServiceRegisterVehicleExit {
 	public ServiceRegisterVehicleExit(ParkingLotRepository repository) {
 		this.repository = repository;
 	}
-	
+		
 	public Ticket registerVehicleExit(Integer id) {
 		Ticket ticketEntry = this.repository.findById(id);
 		ticketEntry.setDepartureDate(LocalDateTime.now());

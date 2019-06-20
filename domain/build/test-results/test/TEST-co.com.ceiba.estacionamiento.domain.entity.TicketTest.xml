@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.estacionamiento.domain.entity.TicketTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-06-20T20:29:12" hostname="EDUARDO-MONTEJO" time="0.033">
+<testsuite name="co.com.ceiba.estacionamiento.domain.entity.TicketTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-06-20T20:53:45" hostname="EDUARDO-MONTEJO" time="0.039">
   <properties/>
-  <testcase name="validateAdmissionDate" classname="co.com.ceiba.estacionamiento.domain.entity.TicketTest" time="0.032"/>
+  <testcase name="validateAdmissionDate" classname="co.com.ceiba.estacionamiento.domain.entity.TicketTest" time="0.038"/>
   <testcase name="validateVehicle" classname="co.com.ceiba.estacionamiento.domain.entity.TicketTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
