@@ -33,10 +33,17 @@ pipeline {
 	 		}
 	 	}
 	 	
+	 	stage('Compile') {
+    		steps{
+    			echo "------------>Compile<------------"
+    			sh 'gradle --b ./build.gradle compileJava'
+    		}
+  		}
+	 	
 	 	stage('Unit Tests') {
 	 		steps{
 	 			echo "------------>Unit Tests<------------"
-	 			sh '​gradle --b ./build.gradle test​'
+	 			sh 'gradle --b ./build.gradle test'
 	 		}
 	 	}
 	 	
@@ -58,7 +65,7 @@ pipeline {
 	 	stage('Build') {
 	 		steps {
 	 			echo "------------>Build<------------"
-	 			sh '​gradle --b ./build.gradle build -x test​'
+	 			sh 'gradle --b ./build.gradle build -x test'
 	 		}
 	 	}
 	 }
